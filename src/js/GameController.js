@@ -12,15 +12,15 @@ export default class GameController {
     // TODO: load saved stated from stateService
   }
 
-  onCellClick(index) {
-    // TODO: react to click
-  }
+  // onCellClick(index) {
+  //   // TODO: react to click
+  // }
 
-  onCellEnter(index) {
-    // TODO: react to mouse enter
-  }
+  // onCellEnter(index) {
+  //   // TODO: react to mouse enter
+  // }
 
-  onCellLeave(index) {
-    // TODO: react to mouse leave
-  }
+  // onCellLeave(index) {
+  //   // TODO: react to mouse leave
+  // }
 }
