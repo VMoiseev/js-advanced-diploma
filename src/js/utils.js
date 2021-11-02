@@ -1,34 +1,41 @@
-// eslint-disable-next-line no-unused-vars
 export function calcTileType(index, boardSize) {
   // TODO: write logic here
-  // const columnNumber = index % boardSize;
-  // const rowNumber = Math.floor(index / boardSize);
-  // const max = boardSize - 1;
+  const columnNumber = index % boardSize;
+  const rowNumber = Math.floor(index / boardSize);
+  const max = boardSize - 1;
 
-  // if (!columnNumber && !rowNumber) {
-  //   return 'top-left';
-  // }
-  // if (columnNumber === max && !rowNumber) {
-  //   return 'top-right';
-  // }
-  // if (!rowNumber) {
-  //   return 'top';
-  // }
-  // if (!columnNumber && rowNumber === max) {
-  //   return 'bottom-left';
-  // }
-  // if (columnNumber === max && rowNumber === max) {
-  //   return 'bottom-right';
-  // }
-  // if (rowNumber === max) {
-  //   return 'bottom';
-  // }
-  // if (columnNumber === max) {
-  //   return 'right';
-  // }
-  // if (!columnNumber) {
-  //   return 'left';
-  // }
+  if (!columnNumber && !rowNumber) {
+    return 'top-left';
+  }
+
+  if (columnNumber === max && !rowNumber) {
+    return 'top-right';
+  }
+
+  if (!rowNumber) {
+    return 'top';
+  }
+
+  if (!columnNumber && rowNumber === max) {
+    return 'bottom-left';
+  }
+
+  if (columnNumber === max && rowNumber === max) {
+    return 'bottom-right';
+  }
+
+  if (rowNumber === max) {
+    return 'bottom';
+  }
+
+  if (columnNumber === max) {
+    return 'right';
+  }
+
+  if (!columnNumber) {
+    return 'left';
+  }
+
   return 'center';
 }
 
