@@ -1,3 +1,5 @@
+import PositionedCharacter from './PositionedCharacter';
+
 /**
  * Generates random characters
  *
@@ -14,10 +16,33 @@ export function* characterGenerator(allowedTypes, maxLevel) {
 
 export function generateTeam(allowedTypes, maxLevel, characterCount) {
   // TODO: write logic here
-  const team = [];
-  // eslint-disable-next-line no-plusplus
-  for (let i = 0; i < characterCount; i++) {
-    team.push(characterGenerator(allowedTypes, maxLevel).next.value);
+  const playerPosition = [0, 1, 8, 9, 16, 17, 24, 25, 32, 33, 40, 41, 48, 49, 56, 57];
+  const pcPosition = [6, 7, 14, 15, 22, 23, 30, 31, 38, 39, 46, 47, 54, 55, 62, 63];
+  let position;
+  let i;
+  const teams = [];
+  for (let value = 0; value < characterCount; value += 1) {
+    const characterTeams = characterGenerator(allowedTypes, maxLevel);
+    const char = characterTeams.next();
+    switch (char.value.type) {
+      case 'Bowman':
+      case 'Swordsman':
+      case 'Magician':
+        i = Math.floor(Math.random() * playerPosition.length);
+        position = playerPosition[i];
+        playerPosition.splice(i, 1);
+        break;
+      case 'Undead':
+      case 'Vampire':
+      case 'Daemon':
+        i = Math.floor(Math.random() * pcPosition.length);
+        position = pcPosition[i];
+        pcPosition.splice(i, 1);
+        break;
+      default:
+        break;
+    }
+    teams.push(new PositionedCharacter(char.value, position));
   }
-  return team;
+  return teams;
 }
