@@ -39,6 +39,12 @@ export function calcTileType(index, boardSize) {
   return 'center';
 }
 
+export function tooltipMessage({
+  level, attack, defence, health,
+}) {
+  return `🎖${level} ⚔${attack} 🛡${defence} ❤${health}`;
+}
+
 export function calcHealthLevel(health) {
   if (health < 15) {
     return 'critical';
