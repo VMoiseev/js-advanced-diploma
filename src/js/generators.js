@@ -25,16 +25,16 @@ export function generateTeam(allowedTypes, maxLevel, characterCount) {
     const characterTeams = characterGenerator(allowedTypes, maxLevel);
     const char = characterTeams.next();
     switch (char.value.type) {
-      case 'Bowman':
-      case 'Swordsman':
-      case 'Magician':
+      case 'bowman':
+      case 'swordsman':
+      case 'magician':
         i = Math.floor(Math.random() * playerPosition.length);
         position = playerPosition[i];
         playerPosition.splice(i, 1);
         break;
-      case 'Undead':
-      case 'Vampire':
-      case 'Daemon':
+      case 'undead':
+      case 'vampire':
+      case 'daemon':
         i = Math.floor(Math.random() * pcPosition.length);
         position = pcPosition[i];
         pcPosition.splice(i, 1);
