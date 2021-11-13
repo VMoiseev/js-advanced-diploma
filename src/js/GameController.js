@@ -1,9 +1,10 @@
-/* eslint-disable no-console */
 import { generateTeam } from './generators';
 import Team from './Team';
 import themes from './themes';
 import cursors from './cursors';
 import { tooltipMessage } from './utils';
+import GameState from './GameState';
+import GamePlay from './GamePlay';
 
 export default class GameController {
   constructor(gamePlay, stateService) {
@@ -11,6 +12,7 @@ export default class GameController {
     this.stateService = stateService;
     this.playerTeam = generateTeam(new Team().playerTeam, 1, 2, this.gamePlay.boardSize);
     this.pcTeam = generateTeam(new Team().pcTeam, 1, 2, this.gamePlay.boardSize);
+    this.state = GameState.from(this);
   }
 
   init() {
@@ -25,7 +27,14 @@ export default class GameController {
 
   onCellClick(index) {
     // TODO: react to click
-    console.log(index, this);
+    const teamsPositions = this.playerTeam;
+    const person = teamsPositions.find((item) => item.position === index);
+    if (person) {
+      this.playerTeam.forEach((item) => this.gamePlay.deselectCell(item.position));
+      this.gamePlay.selectCell(index);
+    } else {
+      GamePlay.showError('Это не ваш персонаж!');
+    }
   }
 
   onCellEnter(index) {
