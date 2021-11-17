@@ -27,12 +27,15 @@ export default class GameController {
 
   onCellClick(index) {
     // TODO: react to click
-    const teamsPositions = this.playerTeam;
-    const person = teamsPositions.find((item) => item.position === index);
-    if (person) {
+    const playerTeamsPosition = this.playerTeam;
+    const player = playerTeamsPosition.find((item) => item.position === index);
+    if (player) {
       this.playerTeam.forEach((item) => this.gamePlay.deselectCell(item.position));
       this.gamePlay.selectCell(index);
-    } else {
+    }
+    const pcTeamsPosition = this.pcTeam;
+    const pc = pcTeamsPosition.find((item) => item.position === index);
+    if (pc) {
       GamePlay.showError('Это не ваш персонаж!');
     }
   }
